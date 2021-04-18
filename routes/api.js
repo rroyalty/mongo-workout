@@ -5,7 +5,12 @@ const path = require("path");
 
 router.get("/workouts", async (req, res) => {
     try {
-        const workoutData = await db.Workout.find({})
+        // const workoutData = await db.Workout.find({})
+        const workoutData = await db.Workout.aggregate([
+            {$set: {
+                totalDuration: {$sum: "$exercises.duration"}
+            }},
+        ])
         console.log(workoutData)
         res.status(200).json(workoutData);
         } catch (err) {
@@ -15,7 +20,12 @@ router.get("/workouts", async (req, res) => {
 
 router.get("/workouts/range", async (req, res) => {
     try {
-        const workoutData = await db.Workout.find({})
+        // const workoutData = await db.Workout.find({})
+        const workoutData = await db.Workout.aggregate([
+            {$set: {
+                totalDuration: {$sum: "$exercises.duration"}
+            }},
+        ])
         console.log(workoutData)
         res.status(200).json(workoutData) 
         } catch (err) {
