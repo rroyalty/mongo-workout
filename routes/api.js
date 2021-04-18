@@ -11,7 +11,7 @@ router.get("/workouts", async (req, res) => {
                 totalDuration: {$sum: "$exercises.duration"}
             }},
         ])
-        console.log(workoutData)
+        // console.log(workoutData)
         res.status(200).json(workoutData);
         } catch (err) {
             res.status(400).json(err);
@@ -26,7 +26,7 @@ router.get("/workouts/range", async (req, res) => {
                 totalDuration: {$sum: "$exercises.duration"}
             }},
         ])
-        console.log(workoutData)
+        // console.log(workoutData)
         res.status(200).json(workoutData) 
         } catch (err) {
             res.status(400).json(err);
